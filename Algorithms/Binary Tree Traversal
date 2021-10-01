@@ -77,10 +77,10 @@ void PostOrder(node *root) {
 int main() {
     node *root = NULL;
     root = build();
-    
+
     PostOrder(root);
     InOrder(root);
     PreOrder(root);
-    
+
     return 0;
 }
