@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>card table</title>
+
+    <style>
+              body {
+      	margin: 2em;
+      }
+
+      .table-bordered.card {
+      	border: 0 !important;
+      }
+      .card thead {
+      	display: none;
+      }
+
+      .card tbody tr {
+      	float: left;
+      	width: 25em;
+      	margin: 0.5em;
+      	border: 1px solid #bfbfbf;
+      	border-radius: 0.5em;
+      	background-color: transparent !important;
+      	box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+      }
+      .card tbody tr td {
+      	display: block;
+      	border: 0;
+      }
+
+      p {
+      	text-align: center;
+      	color: limegreen;
+      	font-size: 1.5em;
+      	font-weight: bold;
+      	text-shadow: 1px 1px 2px #000;
+      	margin-bottom: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Klik the CARD VIEW button to change the datatable view</p>
+    <a
+      class="btn btn-success"
+      style="float:left;margin-right:20px;"
+      href="https://codepen.io/collection/XKgNLN/"
+      target="_blank"
+      >Other examples on Codepen</a
+    >
+    <table
+      id="example"
+      class="table table-striped table-bordered"
+      cellspacing="0"
+      width="100%"
+    >
+      <thead>
+        <tr>
+          <th>Header 1</th>
+          <th>Header 2</th>
+          <th>Header 3</th>
+          <th>Header 4</th>
+          <th>Header 5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Row:1 Cell:1</td>
+          <td>Row:1 Cell:2</td>
+          <td>Row:1 Cell:3</td>
+          <td>Row:1 Cell:4</td>
+          <td>Row:1 Cell:5</td>
+        </tr>
+        <tr>
+          <td>Row:2 Cell:1</td>
+          <td>Row:2 Cell:2</td>
+          <td>Row:2 Cell:3</td>
+          <td>Row:2 Cell:4</td>
+          <td>Row:2 Cell:5</td>
+        </tr>
+        <tr>
+          <td>Row:3 Cell:1</td>
+          <td>Row:3 Cell:2</td>
+          <td>Row:3 Cell:3</td>
+          <td>Row:3 Cell:4</td>
+          <td>Row:3 Cell:5</td>
+        </tr>
+        <tr>
+          <td>Row:4 Cell:1</td>
+          <td>Row:4 Cell:2</td>
+          <td>Row:4 Cell:3</td>
+          <td>Row:4 Cell:4</td>
+          <td>Row:4 Cell:5</td>
+        </tr>
+        <tr>
+          <td>Row:5 Cell:1</td>
+          <td>Row:5 Cell:2</td>
+          <td>Row:5 Cell:3</td>
+          <td>Row:5 Cell:4</td>
+          <td>Row:5 Cell:5</td>
+        </tr>
+        <tr>
+          <td>Row:6 Cell:1</td>
+          <td>Row:6 Cell:2</td>
+          <td>Row:6 Cell:3</td>
+          <td>Row:6 Cell:4</td>
+          <td>Row:6 Cell:5</td>
+        </tr>
+        <tr>
+          <td>Row:7 Cell:1</td>
+          <td>Row:7 Cell:2</td>
+          <td>Row:7 Cell:3</td>
+          <td>Row:7 Cell:4</td>
+          <td>Row:7 Cell:5</td>
+        </tr>
+        <tr>
+          <td>Row:8 Cell:1</td>
+          <td>Row:8 Cell:2</td>
+          <td>Row:8 Cell:3</td>
+          <td>Row:8 Cell:4</td>
+          <td>Row:8 Cell:5</td>
+        </tr>
+        <tr>
+          <td>Row:9 Cell:1</td>
+          <td>Row:9 Cell:2</td>
+          <td>Row:9 Cell:3</td>
+          <td>Row:9 Cell:4</td>
+          <td>Row:9 Cell:5</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+  <script>
+    $(document).ready(function () {
+      //Only needed for the filename of export files.
+      //Normally set in the title tag of your page.
+      document.title = "Card View DataTable";
+      // DataTable initialisation
+      $("#example").DataTable({
+        dom: '<"dt-buttons"Bf><"clear">lirtp',
+        paging: true,
+        autoWidth: true,
+        buttons: [
+          "colvis",
+          "copyHtml5",
+          "csvHtml5",
+          "excelHtml5",
+          "pdfHtml5",
+          "print",
+        ],
+        initComplete: function (settings, json) {
+          $(".dt-buttons .btn-group").append(
+            '<a id="cv" class="btn btn-primary" href="#">CARD VIEW</a>'
+          );
+          $("#cv").on("click", function () {
+            if ($("#example").hasClass("card")) {
+              $(".colHeader").remove();
+            } else {
+              var labels = [];
+              $("#example thead th").each(function () {
+                labels.push($(this).text());
+              });
+              $("#example tbody tr").each(function () {
+                $(this)
+                  .find("td")
+                  .each(function (column) {
+                    $(
+                      "<span class='colHeader'>" + labels[column] + ":</span>"
+                    ).prependTo($(this));
+                  });
+              });
+            }
+            $("#example").toggleClass("card");
+          });
+        },
+      });
+    });
+  </script>
+</html>
