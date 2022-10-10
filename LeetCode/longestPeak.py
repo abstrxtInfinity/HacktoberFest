@@ -3,10 +3,9 @@ def longestPeak(arr):
     i = 1
     while i < len(arr) - 1:
         isPeak = arr[i] > arr[i-1] and arr[i] > arr[i+1]
-        if not(isPeak):
-            i+=1    
+        if not (isPeak):
+            i += 1
             continue
-
 
         leftIdx = i - 2
 
@@ -21,9 +20,10 @@ def longestPeak(arr):
         length = rightIdx - leftIdx - 1
 
         if length > longestPeak:
-            longestPeak = length            
+            longestPeak = length
 
-        i=rightIdx
-    return longestPeak        
+        i = rightIdx
+    return longestPeak
 
-print(longestPeak([1,0,3,3,4,0,10,6,5,-1,-3,2,3]))
+
+print(longestPeak([1, 0, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3]))
