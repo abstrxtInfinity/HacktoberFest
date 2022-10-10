@@ -44,7 +44,7 @@ def arrayOfProducts3(arr):
         product *= el
 
     for i in range(len(result)):
-        result[i] = int(product/arr[i])
+        result[i] = int(product / arr[i])
     return result
 
 
