@@ -16,7 +16,8 @@ def arrayOfProducts(arr):
     for i in range(len(result)):
         result[i] = left[i] * right[i]
 
-    return result          
+    return result
+
 
 def arrayOfProducts2(arr):
     result = [1 for _ in arr]
@@ -31,18 +32,20 @@ def arrayOfProducts2(arr):
         result[i] *= product
         product *= arr[i]
 
-    return result     
+    return result
+
 
 def arrayOfProducts3(arr):
     result = [1 for _ in arr]
 
     product = 1
-    
+
     for el in arr:
         product *= el
 
     for i in range(len(result)):
         result[i] = int(product/arr[i])
-    return result       
+    return result
 
-print(arrayOfProducts([5,1,4,2]))
+
+print(arrayOfProducts([5, 1, 4, 2]))
