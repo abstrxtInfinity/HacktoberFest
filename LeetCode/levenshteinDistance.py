@@ -13,7 +13,8 @@ def levenshteinDistance(str1, str2):
             if big[i - 1] == small[j - 1]:
                 record[1][j] = record[0][j - 1]
             else:
-                record[1][j] = 1 + min(record[1][j - 1], record[0][j], record[0][j - 1])
+                record[1][j] = 1 + min(record[1][j - 1], record[0][j],
+                                       record[0][j - 1])
 
         record[0] = record[1]
     return record[-1][-1]
