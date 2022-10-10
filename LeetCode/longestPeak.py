@@ -2,7 +2,7 @@ def longestPeak(arr):
     longestPeak = -1
     i = 1
     while i < len(arr) - 1:
-        isPeak = arr[i] > arr[i-1] and arr[i] > arr[i+1]
+        isPeak = arr[i] > arr[i - 1] and arr[i] > arr[i + 1]
         if not (isPeak):
             i += 1
             continue
